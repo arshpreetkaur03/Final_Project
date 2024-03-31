@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Search menu item -->
+    <item
+        android:id="@+id/action_search"
+        android:title="Search"
+        android:icon="@drawable/search"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <!-- Help menu item -->
+    <item
+        android:id="@+id/action_help"
+        android:title="Help"
+        app:showAsAction="never" />
+
+    <!-- Favorite Songs menu item -->
+    <item
+        android:id="@+id/action_favorite_songs"
+        android:title="Favorite Songs"
+        app:showAsAction="never" />
+
+    <!-- Other menu items can be added here -->
+
+</menu>
