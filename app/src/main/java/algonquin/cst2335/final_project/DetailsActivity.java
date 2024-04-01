@@ -23,31 +23,20 @@ public class DetailsActivity extends AppCompatActivity {
         albumTextView = findViewById(R.id.album_name);
         durationTextView = findViewById(R.id.song_duration);
 
-        // Get song details from intent extras
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String title = extras.getString("title", "Title not available");
-            String artist = extras.getString("artist", "Artist not available");
-            String album = extras.getString("album", "Album not available");
-            String coverUrl = extras.getString("coverUrl", "");
-            int durationInSeconds = extras.getInt("duration", 0);
+        // Get the Song object from intent extras
+        Song song = (Song) getIntent().getSerializableExtra("selectedSong");
+        if (song != null) {
+            // Use the Song object to set details in views
+            titleTextView.setText(song.getTitle());
+            artistTextView.setText(song.getArtistName());
+            albumTextView.setText(song.getAlbumName());
+            durationTextView.setText(song.getFormattedDuration());
 
-            // Format duration from seconds to a more readable format (e.g., mm:ss)
-            String formattedDuration = formatDuration(durationInSeconds);
-
-            // Set song details to views
-            setTitle(title); // Consider if you want to set the activity title to the song title
-            titleTextView.setText(title);
-            artistTextView.setText(artist);
-            albumTextView.setText(album);
-            durationTextView.setText(formattedDuration);
-
-            // Load album cover image using Picasso library
-            if (!coverUrl.isEmpty()) {
-                Picasso.get().load(coverUrl).into(albumCoverImageView);
-            }
+            // Load album cover image using Picasso or Glide
+            Picasso.get().load(song.getCoverUrl()).into(albumCoverImageView);
         }
     }
+
 
     /**
      * Formats the duration from seconds into a mm:ss format.
