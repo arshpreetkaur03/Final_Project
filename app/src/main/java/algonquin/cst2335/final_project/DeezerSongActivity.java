@@ -3,7 +3,7 @@
  * It allows users to search for songs via the Deezer API, view a list of results in a {@link RecyclerView}, and navigate to other activities
  * to view detailed information about a selected song or to see their favorite songs. This activity manages various UI components, handles user input,
  * and interacts with a local database and shared preferences for storing search history and preferences.
- * <p>
+ *
  * Author: Arshpreet Kaur
  * Lab Section: 022
  * Creation Date: 31 March 2024
@@ -223,12 +223,6 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
         startActivity(intent);
         // Show a Snackbar message
         showSnackbar(getString(R.string.song_selected) + selectedSong.getTitle());
-    }
-
-    @Override
-    public void onBackPressed() {
-        // Handle any necessary actions when back button is pressed
-        super.onBackPressed();
     }
 
     /**
