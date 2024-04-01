@@ -22,15 +22,21 @@ import algonquin.cst2335.final_project.Song;
 public class DetailsActivity extends AppCompatActivity {
     private ImageView albumCoverImageView;
     private TextView titleTextView, artistTextView, albumTextView, durationTextView;
-        Songd songdb;
+    private Songd songdb; // Assuming you want to use it for something
+
+    // Make db a class-wide field to ensure it's accessible throughout the class
+    private AppDatabase db;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        //room database
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "songs").build();
-        SongDao songDao = db.songDao();
+
+        // Initialize Room database
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "songs_database")
+                .fallbackToDestructiveMigration() // Handle schema changes without proper migration; use with caution
+                .build();
+
         // Initialize views
         albumCoverImageView = findViewById(R.id.album_cover_image);
         titleTextView = findViewById(R.id.song_title);
@@ -38,40 +44,32 @@ public class DetailsActivity extends AppCompatActivity {
         albumTextView = findViewById(R.id.album_name);
         durationTextView = findViewById(R.id.song_duration);
 
-        // Get the Song object from intent extras
-        Song song = (Song) getIntent().getSerializableExtra("selectedSong");
+        // Final variable to hold the song object for use in inner class
+        final Song song = (Song) getIntent().getSerializableExtra("selectedSong");
         if (song != null) {
-            // Use the Song object to set details in views
-            titleTextView.setText(song.getTitle());
-            artistTextView.setText(song.getArtistName());
-            albumTextView.setText(song.getAlbumName());
-            durationTextView.setText(song.getFormattedDuration());
+            displaySongDetails(song);
+        }
 
-            // Load album cover image using Picasso or Glide
-            Picasso.get().load(song.getCoverUrl()).into(albumCoverImageView);
-        }
-        findViewById(R.id.save_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (song != null) {
-                    Songd songd = new Songd(song.getTitle(), song.getArtistName(), song.getAlbumName(), song.getDuration(), song.getCoverUrl());
-                    new Thread(() -> {
-                        db.songDao().insert(songd);
-                    }).start();
-                Toast.makeText(DetailsActivity.this, "Song saved to favorites", Toast.LENGTH_SHORT).show();
+        findViewById(R.id.save_button).setOnClickListener(v -> {
+            if (song != null) {
+                saveSongToDatabase(song);
             }
-        }
-});
+        });
     }
-    /**
-     * Formats the duration from seconds into a mm:ss format.
-     *
-     * @param durationInSeconds The duration in seconds.
-     * @return The formatted duration as a String.
-     */
-    private String formatDuration(int durationInSeconds) {
-        int minutes = durationInSeconds / 60;
-        int seconds = durationInSeconds % 60;
-        return String.format("%02d:%02d", minutes, seconds);
+
+    private void displaySongDetails(Song song) {
+        titleTextView.setText(song.getTitle());
+        artistTextView.setText(song.getArtistName());
+        albumTextView.setText(song.getAlbumName());
+        durationTextView.setText(song.getFormattedDuration());
+        Picasso.get().load(song.getCoverUrl()).into(albumCoverImageView);
+    }
+
+    private void saveSongToDatabase(Song song) {
+        Songd songd = new Songd(song.getTitle(), song.getArtistName(), song.getAlbumName(), song.getDuration(), song.getCoverUrl());
+        new Thread(() -> {
+            db.songDao().insert(songd);
+            runOnUiThread(() -> Toast.makeText(DetailsActivity.this, "Song saved to favorites", Toast.LENGTH_SHORT).show());
+        }).start();
     }
 }

@@ -4,13 +4,15 @@
     android:layout_height="match_parent">
 
     <!-- Include the Toolbar layout -->
+
+    <!-- ListView for displaying favorite songs -->
+
     <include
         android:id="@+id/toolbar_layout"
         layout="@layout/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- ListView for displaying favorite songs -->
     <ListView
         android:id="@+id/favorite_songs_list"
         android:layout_width="match_parent"
@@ -19,5 +21,6 @@
         android:padding="16dp"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp" />
+
 
 </RelativeLayout>
