@@ -13,7 +13,6 @@ import android.widget.EditText;
 import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,7 +31,7 @@ import algonquin.cst2335.final_project.Database.AppDatabase;
 import algonquin.cst2335.final_project.Database.SearchHistory;
 import algonquin.cst2335.final_project.Database.SearchHistoryDao;
 
-public class MainActivity extends AppCompatActivity implements SongAdapter.OnItemClickListener {
+public class DeezerSongActivity extends AppCompatActivity implements SongAdapter.OnItemClickListener {
 
     private RecyclerView recyclerView;
     private SongAdapter songAdapter;
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.song_activity_main);
 
         // Initialize RecyclerView, SongAdapter, ApiService, and SharedPreferencesManager
         recyclerView = findViewById(R.id.recycler_view_songs);
@@ -112,24 +111,24 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
                             songList.addAll(songs);
                             songAdapter.notifyDataSetChanged();
                         } else {
-                            Log.e("MainActivity", "Error parsing JSON response");
-                            Toast.makeText(MainActivity.this, "Error parsing JSON response", Toast.LENGTH_SHORT).show();
+                            Log.e("DeezerSongActivity", "Error parsing JSON response");
+                            Toast.makeText(DeezerSongActivity.this, "Error parsing JSON response", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e) {
-                        Log.e("MainActivity", "Error: " + e.getMessage());
-                        Toast.makeText(MainActivity.this, "Error parsing JSON response", Toast.LENGTH_SHORT).show();
+                        Log.e("DeezerSongActivity", "Error: " + e.getMessage());
+                        Toast.makeText(DeezerSongActivity.this, "Error parsing JSON response", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onError(String errorMessage) {
-                    Log.e("MainActivity", "Error: " + errorMessage);
-                    Toast.makeText(MainActivity.this, "Error fetching data", Toast.LENGTH_SHORT).show();
+                    Log.e("DeezerSongActivity", "Error: " + errorMessage);
+                    Toast.makeText(DeezerSongActivity.this, "Error fetching data", Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (Exception e) {
-            Log.e("MainActivity", "Error: " + e.getMessage());
-            Toast.makeText(MainActivity.this, "Error fetching data", Toast.LENGTH_SHORT).show();
+            Log.e("DeezerSongActivity", "Error: " + e.getMessage());
+            Toast.makeText(DeezerSongActivity.this, "Error fetching data", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -190,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
     public void onItemClick(int position) {
         // Handle item click to open details activity
         Song selectedSong = songList.get(position);
-        Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+        Intent intent = new Intent(DeezerSongActivity.this, DetailsActivity.class);
         intent.putExtra("selectedSong", (Serializable) selectedSong);
         startActivity(intent);
         // Show a Snackbar message

@@ -12,4 +12,7 @@ public interface SearchHistoryDao {
 
     @Query("SELECT * FROM searchHistory ORDER BY id DESC")
     List<SearchHistory> getAllSearchTerms();
+
+    @Query("DELETE FROM searchHistory")
+    void deleteAll();
 }

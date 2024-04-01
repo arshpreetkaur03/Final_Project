@@ -24,4 +24,9 @@
 
     <!-- Other menu items can be added here -->
 
+    <item
+        android:id="@+id/action_favorite_songs"
+        android:title="Search History"
+        app:showAsAction="never" />
+
 </menu>

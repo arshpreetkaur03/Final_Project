@@ -70,8 +70,8 @@ public class FavoriteSongsActivity extends AppCompatActivity {
             List<Songd> songs = db.songDao().getAllFavoriteSongs();
             favoriteSongsTitles.clear();
             for (Songd song : songs) {
-                favoriteSongsTitles.add(song.getTitle());
-                favoriteSongsTitles.add(song.getArtistName());// Example: Fetching only the title, adapt as needed.
+                favoriteSongsTitles.add(song.getTitle()+" by "+song.getArtistName()+"  "+song.getDuration()+"s");
+                // Example: Fetching only the title, adapt as needed.
             }
             // Update UI on UI Thread
             runOnUiThread(() -> adapter.notifyDataSetChanged());
