@@ -3,10 +3,13 @@ package algonquin.cst2335.final_project;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -14,6 +17,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
 
     private List<Song> songList;
     private OnItemClickListener listener;
+
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -47,6 +51,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
         private TextView artistNameTextView;
         private TextView albumNameTextView;
         private TextView durationTextView;
+        private ImageView albumCoverImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,7 +59,11 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
             artistNameTextView = itemView.findViewById(R.id.artist_name);
             albumNameTextView = itemView.findViewById(R.id.album_name);
             durationTextView = itemView.findViewById(R.id.song_duration);
+            albumCoverImage = itemView.findViewById(R.id.album_cover_image);
             itemView.setOnClickListener(this);
+
+
+
         }
 
         public void bind(Song song) {
@@ -62,6 +71,9 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
             artistNameTextView.setText(song.getArtistName());
             albumNameTextView.setText(song.getAlbumName());
             durationTextView.setText(song.getFormattedDuration());
+            Glide.with(itemView.getContext())
+                    .load(song.getCoverUrl())
+                    .into(albumCoverImage);
         }
 
         @Override
@@ -74,4 +86,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
             }
         }
     }
+
+
 }

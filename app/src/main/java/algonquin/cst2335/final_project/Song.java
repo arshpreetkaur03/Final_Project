@@ -1,11 +1,13 @@
 package algonquin.cst2335.final_project;
 
 
+import java.io.Serializable;
+
 /**
  * Represents a song with details such as title, artist name, album name, cover URL, and duration.
  * Provides functionality to get these details and to format the song duration from seconds to a readable format.
  */
-public class Song {
+public class Song implements Serializable {
     private String title;
     private String artistName;
     private String albumName;

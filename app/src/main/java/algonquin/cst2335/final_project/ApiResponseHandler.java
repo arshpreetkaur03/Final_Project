@@ -1,8 +1,6 @@
 package algonquin.cst2335.final_project;
 
-
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,7 +14,7 @@ public class ApiResponseHandler {
         List<Song> songsList = new ArrayList<>();
 
         try {
-            JSONArray data = jsonResponse.getJSONArray("data");
+            JSONArray data = jsonResponse.getJSONArray("data"); // Assuming 'data' is a JSONArray
 
             for (int i = 0; i < data.length(); i++) {
                 JSONObject songJson = data.getJSONObject(i);

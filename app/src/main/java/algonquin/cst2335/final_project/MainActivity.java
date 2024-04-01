@@ -77,7 +77,14 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
         if (!savedSearchTerm.isEmpty()) {
             searchEditText.setText(savedSearchTerm);
         }
+
+
+
     }
+
+
+
+
 
     private void saveSearchTerm(String searchTerm) {
         sharedPreferencesManager.saveSearchTerm(searchTerm);

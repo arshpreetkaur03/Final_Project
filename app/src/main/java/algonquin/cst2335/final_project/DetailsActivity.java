@@ -24,22 +24,40 @@ public class DetailsActivity extends AppCompatActivity {
         durationTextView = findViewById(R.id.song_duration);
 
         // Get song details from intent extras
-        if (getIntent().getExtras() != null) {
-            String title = getIntent().getStringExtra("title");
-            String artist = getIntent().getStringExtra("artist");
-            String album = getIntent().getStringExtra("album");
-            String coverUrl = getIntent().getStringExtra("coverUrl");
-            String duration = getIntent().getStringExtra("duration");
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String title = extras.getString("title", "Title not available");
+            String artist = extras.getString("artist", "Artist not available");
+            String album = extras.getString("album", "Album not available");
+            String coverUrl = extras.getString("coverUrl", "");
+            int durationInSeconds = extras.getInt("duration", 0);
+
+            // Format duration from seconds to a more readable format (e.g., mm:ss)
+            String formattedDuration = formatDuration(durationInSeconds);
 
             // Set song details to views
-            setTitle(title);
+            setTitle(title); // Consider if you want to set the activity title to the song title
             titleTextView.setText(title);
             artistTextView.setText(artist);
             albumTextView.setText(album);
-            durationTextView.setText(duration);
+            durationTextView.setText(formattedDuration);
 
             // Load album cover image using Picasso library
-            Picasso.get().load(coverUrl).into(albumCoverImageView);
+            if (!coverUrl.isEmpty()) {
+                Picasso.get().load(coverUrl).into(albumCoverImageView);
+            }
         }
+    }
+
+    /**
+     * Formats the duration from seconds into a mm:ss format.
+     *
+     * @param durationInSeconds The duration in seconds.
+     * @return The formatted duration as a String.
+     */
+    private String formatDuration(int durationInSeconds) {
+        int minutes = durationInSeconds / 60;
+        int seconds = durationInSeconds % 60;
+        return String.format("%02d:%02d", minutes, seconds);
     }
 }

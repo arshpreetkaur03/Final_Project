@@ -1,6 +1,8 @@
 package algonquin.cst2335.final_project;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,5 +54,10 @@ public class FavoriteSongsActivity extends AppCompatActivity {
         intent.putExtra("duration", song.getFormattedDuration());
         startActivity(intent);
     }
+
+
+
+
+
 }
 

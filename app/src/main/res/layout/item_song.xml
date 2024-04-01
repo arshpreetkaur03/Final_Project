@@ -15,6 +15,7 @@
         android:layout_alignParentStart="true" />
 
     <!-- Song Title -->
+
     <TextView
         android:id="@+id/song_title"
         android:layout_width="wrap_content"
@@ -23,7 +24,7 @@
         android:layout_alignTop="@id/album_cover_image"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="Song Title" />
+        android:text="@string/song_title" />
 
     <!-- Artist Name -->
     <TextView
@@ -33,7 +34,7 @@
         android:layout_below="@id/song_title"
         android:layout_toEndOf="@id/album_cover_image"
         android:textSize="16sp"
-        android:text="Artist Name" />
+        android:text="@string/artist_name" />
 
     <!-- Album Name -->
     <TextView
@@ -43,7 +44,7 @@
         android:layout_below="@id/artist_name"
         android:layout_toEndOf="@id/album_cover_image"
         android:textSize="16sp"
-        android:text="Album Name" />
+        android:text="@string/album_name" />
 
     <!-- Song Duration -->
     <TextView
@@ -53,6 +54,7 @@
         android:layout_below="@id/album_name"
         android:layout_toEndOf="@id/album_cover_image"
         android:textSize="16sp"
-        android:text="Duration" />
+        android:text="@string/duration" />
 
 </RelativeLayout>
+
