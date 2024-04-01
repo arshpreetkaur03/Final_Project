@@ -17,5 +17,10 @@ public interface SongDao {
 
     @Query("SELECT * FROM songs")
     List<Songd> getAllFavoriteSongs();
+
+    @Query("DELETE FROM songs")
+    void deleteAll();
+
+
 }
 

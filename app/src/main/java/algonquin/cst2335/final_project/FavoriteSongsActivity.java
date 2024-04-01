@@ -1,11 +1,14 @@
 package algonquin.cst2335.final_project;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 
 import android.os.Bundle;
 
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -36,6 +39,30 @@ public class FavoriteSongsActivity extends AppCompatActivity {
                 .build();
 
         fetchFavoriteSongs();
+
+
+
+        findViewById(R.id.delete_btn).setOnClickListener(view -> {
+            new AlertDialog.Builder(this)
+                    .setTitle("Delete All Songs")
+                    .setMessage("Are you sure you want to delete all songs?")
+                    .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
+                        // Place the delete code here
+                        new Thread(() -> {
+                            db.songDao().deleteAll();
+
+                            // If you need to update the UI after deletion (e.g., clear a list or show a message),
+                            // make sure to run that on the UI thread:
+                            runOnUiThread(() -> {
+                                Toast.makeText(this, "All songs deleted", Toast.LENGTH_SHORT).show();
+                                // If you're displaying the songs in a ListView or RecyclerView, clear the adapter's data here
+                                adapter.clear(); adapter.notifyDataSetChanged();
+                            });
+                        }).start();
+                    })
+                    .setNegativeButton(android.R.string.no, null).show();
+
+        });
     }
 
     private void fetchFavoriteSongs() {
