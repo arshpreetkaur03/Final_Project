@@ -1,5 +1,6 @@
 package algonquin.cst2335.final_project.Database;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 

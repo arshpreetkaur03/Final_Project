@@ -50,20 +50,19 @@ public class DetailsActivity extends AppCompatActivity {
             // Load album cover image using Picasso or Glide
             Picasso.get().load(song.getCoverUrl()).into(albumCoverImageView);
         }
-        findViewById(R.id.save_button).setOnClickListener(view -> new Thread(() -> {
-            // Retrieve the song object from the intent again or make it final so it can be accessed here
-            Songd songdb = (Songd) getIntent().getSerializableExtra("selectedSong");
-            if (songdb != null) {
-                songDao.insert(songdb);
-                runOnUiThread(() -> Toast.makeText(DetailsActivity.this, "Song saved", Toast.LENGTH_SHORT).show());
+        findViewById(R.id.save_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (song != null) {
+                    Songd songd = new Songd(song.getTitle(), song.getArtistName(), song.getAlbumName(), song.getDuration(), song.getCoverUrl());
+                    new Thread(() -> {
+                        db.songDao().insert(songd);
+                    }).start();
+                Toast.makeText(DetailsActivity.this, "Song saved to favorites", Toast.LENGTH_SHORT).show();
             }
-        }).start());
-
-
-
+        }
+});
     }
-
-
     /**
      * Formats the duration from seconds into a mm:ss format.
      *

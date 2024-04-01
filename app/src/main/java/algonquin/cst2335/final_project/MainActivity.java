@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
 
         // Initialize search EditText
         searchEditText = findViewById(R.id.search_edit_text);
-//Initialize Room db
+            //Initialize Room db
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "searchHistory").build();
         searchHistoryDao = db.searchHistoryDao();
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
         getMenuInflater().inflate(R.menu.main_menu, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setQueryHint("Search Artists");
+        searchView.setQueryHint(getString(R.string.search_artists));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -175,8 +175,8 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
     private void showHelpDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Help");
-        builder.setMessage("Instructions for using the interface...");
-        builder.setPositiveButton("OK", null);
+        builder.setMessage(R.string.help);
+        builder.setPositiveButton(R.string.ok, null);
         AlertDialog dialog = builder.create();
         dialog.show();
     }
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
         intent.putExtra("selectedSong", (Serializable) selectedSong);
         startActivity(intent);
         // Show a Snackbar message
-        showSnackbar("Song selected: " + selectedSong.getTitle());
+        showSnackbar(getString(R.string.song_selected) + selectedSong.getTitle());
     }
 
     @Override

@@ -15,6 +15,9 @@ import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import algonquin.cst2335.final_project.Database.AppDatabase;
+import algonquin.cst2335.final_project.Database.Songd;
+
 public class FavoriteSongsActivity extends AppCompatActivity {
     private ListView listView;
     private List<Song> favoriteSongsList;
@@ -25,24 +28,40 @@ public class FavoriteSongsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_songs);
 
-        // Initialize views
         listView = findViewById(R.id.favorite_songs_list);
 
-        // Initialize favorite songs list
-        favoriteSongsList = new ArrayList<>(); // Assuming this list is populated elsewhere in your app
-
-        // Create ArrayAdapter for the ListView
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, favoriteSongsList);
+        // Initialize the adapter with an empty list; this will be updated once we fetch songs
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new ArrayList<>());
         listView.setAdapter(adapter);
 
-        // Set item click listener for ListView
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        fetchFavoriteSongs();
+    }
+
+    private void fetchFavoriteSongs() {
+        new Thread(new Runnable() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Song selectedSong = favoriteSongsList.get(position);
-                openDetailsActivity(selectedSong);
+            public void run() {
+                List<Songd> savedSongs = AppDatabase.getDatabase(getApplicationContext()).songDao().getAllFavoriteSongs();
+                // Assuming you have a method to convert Songd objects to your Song class
+                List<Song> songs = convertSongdToSong(savedSongs);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.clear();
+                        adapter.addAll(songs);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
-        });
+        }).start();
+    }
+    private List<Song> convertSongdToSong(List<Songd> savedSongs) {
+        List<Song> songs = new ArrayList<>();
+        for (Songd savedSong : savedSongs) {
+            Song song = new Song(savedSong.getTitle(), savedSong.getArtistName(), savedSong.getAlbumName(), savedSong.getCoverUrl(),savedSong.getDuration());
+            songs.add(song);
+        }
+        return songs;
     }
 
     private void openDetailsActivity(Song song) {

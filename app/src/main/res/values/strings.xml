@@ -5,5 +5,11 @@
     <string name="album_name">Album Name</string>
     <string name="artist_name">Artist Name</string>
     <string name="song_title">Song Title</string>
+    <string name="enter_search_query">Enter search query</string>
+    <string name="search">Search</string>
+    <string name="search_artists">Search Artists</string>
+    <string name="help">To navigate the Music Library App, start by exploring the song collection and tapping on any song to view its details, including title, artist, and duration. You can save your favorites by pressing the \"Save\" button while viewing a song\'s details. To revisit these selections, simply go to the \"Favorite Songs\" section from the main menu. If you need further guidance, access this help guide from the main menu. Enjoy curating your personal music collection with ease!</string>
+    <string name="song_selected">"Song selected: "</string>
+    <string name="ok">OK</string>
 
 </resources>

@@ -18,19 +18,18 @@ public class Songd {
     @ColumnInfo(name = "album")
     public String albumName;
 
-    @ColumnInfo(name = "cover_url")
-    public String coverUrl;
-
     @ColumnInfo(name = "duration")
     public int duration;
 
-    public Songd() {
-        this.id = id;
+    @ColumnInfo(name = "cover_url")
+    public String coverUrl;
+
+    public Songd(String title, String artistName, String albumName, int duration, String coverUrl) {
         this.title = title;
         this.artistName = artistName;
         this.albumName = albumName;
-        this.coverUrl = coverUrl;
         this.duration = duration;
+        this.coverUrl = coverUrl;
     }
 
     public int getId() {
