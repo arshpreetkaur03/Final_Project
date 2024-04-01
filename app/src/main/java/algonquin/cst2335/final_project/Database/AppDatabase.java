@@ -1,4 +1,10 @@
 package algonquin.cst2335.final_project.Database;
+/**
+ * Purpose: This file conatins
+ * Author: Arshpreet Kaur
+ * Lab Section: 022
+ * Creation Date: 31 March 2024
+ */
 
 import android.content.Context;
 

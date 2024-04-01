@@ -1,6 +1,11 @@
 package algonquin.cst2335.final_project;
 
-
+/**
+ * Purpose: This file conatins
+ * Author: Arshpreet Kaur
+ * Lab Section: 022
+ * Creation Date: 31 March 2024
+ */
 import java.io.Serializable;
 
 /**
@@ -8,6 +13,7 @@ import java.io.Serializable;
  * Provides functionality to get these details and to format the song duration from seconds to a readable format.
  */
 public class Song implements Serializable {
+
     private String title;
     private String artistName;
     private String albumName;

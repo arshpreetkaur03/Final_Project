@@ -1,3 +1,13 @@
+/**
+ * The {@code DeezerSongActivity} class extends {@link AppCompatActivity} and serves as the main activity for a music search and display feature.
+ * It allows users to search for songs via the Deezer API, view a list of results in a {@link RecyclerView}, and navigate to other activities
+ * to view detailed information about a selected song or to see their favorite songs. This activity manages various UI components, handles user input,
+ * and interacts with a local database and shared preferences for storing search history and preferences.
+ * <p>
+ * Author: Arshpreet Kaur
+ * Lab Section: 022
+ * Creation Date: 31 March 2024
+ */
 package algonquin.cst2335.final_project;
 
 import android.app.AlertDialog;
@@ -10,10 +20,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,6 +54,13 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
     private AppDatabase db;
     private SearchHistoryDao searchHistoryDao;
 
+    /**
+     * Initializes the activity, including the toolbar, search functionality,
+     * and RecyclerView for displaying song results. It restores any previously
+     * entered search term and sets up listeners for user interactions.
+     *
+     * @param savedInstanceState Contains data supplied in onSaveInstanceState(Bundle) if the activity is re-initialized.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +80,9 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         // Initialize search EditText
         searchEditText = findViewById(R.id.search_edit_text);
-            //Initialize Room db
+        // Initialize Room db
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "searchHistory").build();
         searchHistoryDao = db.searchHistoryDao();
@@ -88,17 +104,24 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
         if (!savedSearchTerm.isEmpty()) {
             searchEditText.setText(savedSearchTerm);
         }
-
-
-
     }
 
+    /**
+     * Saves the search term to the local database in a background thread.
+     *
+     * @param searchTerm The search term to be saved.
+     */
     private void saveSearchTerm(String searchTerm) {
         new Thread(() -> {
             searchHistoryDao.insert(new SearchHistory(searchTerm));
         }).start();
     }
 
+    /**
+     * Performs a song search using the provided query string.
+     *
+     * @param query The search query.
+     */
     private void performSongSearch(String query) {
         try {
             apiService.searchArtist(query, new ApiService.ApiResponseListener() {
@@ -171,6 +194,9 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Shows a help dialog to provide assistance to the user.
+     */
     private void showHelpDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Help");
@@ -180,6 +206,9 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
         dialog.show();
     }
 
+    /**
+     * Opens the activity to display favorite songs.
+     */
     private void openFavoriteSongsActivity() {
         Intent intent = new Intent(this, FavoriteSongsActivity.class);
         startActivity(intent);
@@ -202,8 +231,12 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
         super.onBackPressed();
     }
 
+    /**
+     * Shows a Snackbar message with the given message.
+     *
+     * @param message The message to be shown in the Snackbar.
+     */
     private void showSnackbar(String message) {
         Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show();
     }
-
 }
