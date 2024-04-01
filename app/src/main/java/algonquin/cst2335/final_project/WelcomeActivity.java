@@ -61,7 +61,7 @@ public class WelcomeActivity extends AppCompatActivity {
         buttonPage4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(WelcomeActivity.this, WelcomeActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, DeezerSongActivity.class));
             }
         });
     }

@@ -58,7 +58,7 @@
     <string name="update_sentence">The location has been updated successfully</string>
 
     <string name="undo">UNDO</string>
-    <string name="ok">OK</string>
+
 
     <string name="about">ABOUT</string>
     <string name="about_message">Type in the Longitude and Latitude of anywhere you would like to know the sunset and sunrise times of.</string>
