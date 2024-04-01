@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -26,6 +27,10 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import algonquin.cst2335.final_project.Database.AppDatabase;
+import algonquin.cst2335.final_project.Database.SearchHistory;
+import algonquin.cst2335.final_project.Database.SearchHistoryDao;
 
 public class MainActivity extends AppCompatActivity implements SongAdapter.OnItemClickListener {
 
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
     private EditText searchEditText;
     private String searchQuery;
     private SharedPreferences sharedPreferences;
+    private AppDatabase db;
+    private SearchHistoryDao searchHistoryDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
 
         // Initialize search EditText
         searchEditText = findViewById(R.id.search_edit_text);
+//Initialize Room db
+        db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "searchHistory").build();
+        searchHistoryDao = db.searchHistoryDao();
 
         // Example usage:
         Button searchButton = findViewById(R.id.search_button);
@@ -69,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
                 searchQuery = searchEditText.getText().toString();
                 performSongSearch(searchQuery);
                 saveSearchTerm(searchQuery);
+
             }
         });
 
@@ -82,12 +94,10 @@ public class MainActivity extends AppCompatActivity implements SongAdapter.OnIte
 
     }
 
-
-
-
-
     private void saveSearchTerm(String searchTerm) {
-        sharedPreferencesManager.saveSearchTerm(searchTerm);
+        new Thread(() -> {
+            searchHistoryDao.insert(new SearchHistory(searchTerm));
+        }).start();
     }
 
     private void performSongSearch(String query) {
