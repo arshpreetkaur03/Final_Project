@@ -37,10 +37,6 @@
             android:exported="false" />
         <activity
             android:name=".WelcomeActivity"
-            android:exported="true"/>
-
-        <activity
-            android:name=".dictionary.DictionaryActivity"
             android:exported="true">
 
             <intent-filter>
@@ -49,6 +45,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".dictionary.DictionaryActivity"
+            android:exported="false"/>
+
+
+
     </application>
 
 </manifest>

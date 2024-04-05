@@ -90,9 +90,8 @@
     <string name="words">Words</string>
     <string name="save_word">saved word</string>
     <string name="welcome_to_the_dictionary_app">Welcome to the Dictionary App</string>
-    <string name="search">Search</string>
     <string name="word">Word</string>
-    <string name="help">Help</string>
+    <string name="helpDict">Help</string>
     <string name="dictionary_about">About</string>
     <string name="saved_definitions">Saved Definitions</string>
 
