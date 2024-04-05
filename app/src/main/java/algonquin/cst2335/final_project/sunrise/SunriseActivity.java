@@ -112,7 +112,7 @@ public class SunriseActivity extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
 
         //inflate a menu into the toolbar
-        getMenuInflater().inflate(R.menu.menu_layout, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 

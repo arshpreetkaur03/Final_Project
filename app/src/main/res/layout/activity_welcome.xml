@@ -6,66 +6,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".WelcomeActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/myToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/my_primary"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
-        android:id="@+id/welcomeTitle"
+        android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:text=""
         android:textAlignment="center"
         android:layout_marginTop="32dp"
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/Sunrise_Sunset_Page"
+        android:id="@+id/Dictionary_APP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name1"
-        android:layout_below="@id/welcomeTitle"
         android:layout_marginTop="32dp"
         android:padding="15dp"
-        app:cornerRadius="0dp"
-        android:textSize="22dp" />
+        android:text="@string/dictionary_app"
+        android:textSize="22dp"
+        app:cornerRadius="0dp" />
 
-    <Button
-        android:id="@+id/Dictionary_API_Page"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name2"
-        android:layout_below="@id/Sunrise_Sunset_Page"
-        android:layout_marginTop="32dp"
-        android:padding="15dp"
-        app:cornerRadius="0dp"
-        android:textSize="22dp" />
-
-    <Button
-        android:id="@+id/Recipe_Search_Page"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name3"
-        android:layout_below="@id/Dictionary_API_Page"
-        android:layout_marginTop="32dp"
-        android:padding="15dp"
-        app:cornerRadius="0dp"
-        android:textSize="22dp" />
-
-    <Button
-        android:id="@+id/Deezer_Song_Search_API_Page"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name4"
-        android:layout_below="@id/Recipe_Search_Page"
-        android:layout_marginTop="32dp"
-        android:padding="15dp"
-        app:cornerRadius="0dp"
-        android:textSize="22dp" />
 
 </RelativeLayout>
