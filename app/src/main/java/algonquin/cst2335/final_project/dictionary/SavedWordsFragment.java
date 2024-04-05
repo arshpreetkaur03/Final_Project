@@ -20,6 +20,7 @@ import algonquin.cst2335.final_project.databinding.DictionarySavedWordsBinding;
 
 
 
+
 public class SavedWordsFragment extends Fragment {
 
     private DictionaryActivity activity = null;
@@ -40,19 +41,20 @@ public class SavedWordsFragment extends Fragment {
         DictionarySavedWordsBinding binding = DictionarySavedWordsBinding.inflate(inflater);
 
         binding.dictSavedRecycleview.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.dictSavedRecycleview.setAdapter(new RecyclerView.Adapter<ViewHolder>() {
+        binding.dictSavedRecycleview.setAdapter(new RecyclerView.Adapter<SavedWordsFragment.ViewHolder>() {
 
 
             @NonNull
             @Override
-            public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public SavedWordsFragment.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View v = LayoutInflater.from(getContext()).inflate(R.layout.dictionary_word, parent, false);
-                return new ViewHolder(v);
+                SavedWordsFragment.ViewHolder vh = new SavedWordsFragment.ViewHolder(v);
+                return vh;
             }
 
 
             @Override
-            public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            public void onBindViewHolder(@NonNull SavedWordsFragment.ViewHolder holder, int position) {
                 final Word word = SavedWordsFragment.this.words.get(position);
                 holder.wordText.setOnClickListener((view -> {
                     Log.i("Saved", "Clicked: " + word.getWord());
@@ -64,8 +66,8 @@ public class SavedWordsFragment extends Fragment {
 
             @Override
             public int getItemCount() {
-                final SavedWordsFragment savedWord = SavedWordsFragment.this;
-                return savedWord.words.size();
+                final SavedWordsFragment savedW = SavedWordsFragment.this;
+                return savedW.words.size();
             }
         });
 

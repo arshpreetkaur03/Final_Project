@@ -1,5 +1,6 @@
 package algonquin.cst2335.final_project.dictionary;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import java.util.List;
 import algonquin.cst2335.final_project.R;
 import algonquin.cst2335.final_project.databinding.DictionaryDefinitionListBinding;
 
+
 public class DefinitionsListFragment extends Fragment {
 
     final List<Definition> definitions;
@@ -37,29 +39,45 @@ public class DefinitionsListFragment extends Fragment {
         this.activity = (DictionaryActivity) getActivity();
         DefinitionDao dao = this.activity.getDefinitionDao();
 
-        DictionaryDefinitionListBinding binding = DictionaryDefinitionListBinding.inflate(inflater, container, false);
-        binding.savedWordTitle.setText(word.toUpperCase());
+        DictionaryDefinitionListBinding binding = DictionaryDefinitionListBinding.inflate(inflater);
+        binding.savedTitle.setText(word.toUpperCase());
 
         binding.dictToggleSaved.setOnClickListener(view -> {
-            final List<Definition> existing = dao.getDefinitionsForWord(this.word);
-            if (existing.size() > 0) {
-                dao.deleteDefinitionsForWord(this.word);
-                Snackbar.make(binding.getRoot(), "Saved word deleted.", Snackbar.LENGTH_LONG)
-                        .setAction("Undo", v -> {
-                            dao.insertAll(existing);
-                            binding.dictRecyclerView.getAdapter().notifyDataSetChanged();
-                        })
-                        .show();
-            } else {
-                dao.insertAll(this.definitions);
-                Snackbar.make(binding.getRoot(), "Word saved.", Snackbar.LENGTH_LONG)
-                        .setAction("Undo", v -> {
-                            dao.deleteDefinitionsForWord(this.word);
-                            binding.dictRecyclerView.getAdapter().notifyDataSetChanged();
-                        })
-                        .show();
-            }
+            new Thread(() -> {
+                List<Definition> existing = dao.getDefinitionsForWord(this.word);
+                if (!existing.isEmpty()) {
+                    dao.deleteDefinitionsForWord(this.word);
+                    activity.runOnUiThread(() -> {
+                        Snackbar.make(binding.getRoot(), "Saved word deleted.", Snackbar.LENGTH_LONG)
+                                .setAction("Undo", v -> {
+                                    new Thread(() -> {
+                                        dao.insertAll(existing);
+                                        activity.runOnUiThread(() -> {
+                                            binding.dictRecyclerView.getAdapter().notifyDataSetChanged();
+                                        });
+                                    }).start();
+                                })
+                                .show();
+                    });
+                } else {
+                    dao.insertAll(this.definitions);
+                    activity.runOnUiThread(() -> {
+                        Snackbar.make(binding.getRoot(), "Word saved.", Snackbar.LENGTH_LONG)
+                                .setAction("Undo", v -> {
+                                    new Thread(() -> {
+                                        dao.deleteDefinitionsForWord(this.word);
+                                        activity.runOnUiThread(() -> {
+                                            binding.dictRecyclerView.getAdapter().notifyDataSetChanged();
+                                        });
+                                    }).start();
+                                })
+                                .show();
+                    });
+                }
+            }).start();
         });
+
+
 
         binding.dictRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.dictRecyclerView.setAdapter(new DefinitionsAdapter(definitions));

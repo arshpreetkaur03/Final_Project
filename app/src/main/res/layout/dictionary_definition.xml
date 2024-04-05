@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="." />
+            android:text="@string/period" />
 
         <Space
             android:layout_width="30dp"
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Part of speech"
+            android:text="@string/part_of_speech"
             android:textStyle="italic" />
 
     </LinearLayout>
@@ -47,6 +47,6 @@
         android:layout_marginTop="11dp"
         android:layout_weight="0"
         android:lineSpacingExtra="4sp"
-        android:text="a book or electronic resource that lists the words of a language and gives their meaning, or gives the equivalent words in a different language, often also providing information about pronunciation, origin, and usage." />
+        android:text="@string/a_book_or_electronic_resource_that_lists_the_words_of_a_language_and_gives_their_meaning_or_gives_the_equivalent_words_in_a_different_language_often_also_providing_information_about_pronunciation_origin_and_usage" />
 
 </LinearLayout>

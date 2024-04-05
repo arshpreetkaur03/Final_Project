@@ -1,5 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CST2335 Final Project</string>
+
+
+
+
+
+
+
 
     <string name="location_info">Location Information</string>
 
@@ -60,24 +67,21 @@
     <string name="app_name4">Deezer Song Search API</string>
 
 
-
-
-    <string name="main_title">What word are you looking for?</string>
-    <string name="saved_word">Saved Words</string>
-    <string name="help_title">Help</string>
-    <string name="help_info">Welcome to the Dictionary Application. To use the app, start by typing your unknown word into the search bar and hit Enter or click the search icon.</string>
-    <string name="dictionary_app">Dictionary APP</string>
-    <string name="period">period</string>
-    <string name="part_of_speech">Part of speech</string>
+    <string name="main_title">Que recherchez vous?</string>
+    <string name="saved_word">Mots Sauvegardés</string>
+    <string name="app_name">CST2335 Final Project</string>
+    <string name="help_title">Aide</string>
+    <string name="help_info">Bienvenue</string>
+    <string name="dictionary_app">Application Dictionaire</string>
+    <string name="period">période</string>
+    <string name="part_of_speech">Partie de Discours</string>
     <string name="a_book_or_electronic_resource_that_lists_the_words_of_a_language_and_gives_their_meaning_or_gives_the_equivalent_words_in_a_different_language_often_also_providing_information_about_pronunciation_origin_and_usage">a book or electronic resource that lists the words of a language and gives their meaning, or gives the equivalent words in a different language, often also providing information about pronunciation, origin, and usage.</string>
-    <string name="words">Words</string>
-    <string name="save_word">saved word</string>
-    <string name="welcome_to_the_dictionary_app">Welcome to the Dictionary App</string>
-    <string name="search">Search</string>
-    <string name="word">Word</string>
-    <string name="help">Help</string>
-    <string name="dictionary_about">About</string>
-    <string name="saved_definitions">Saved Definitions</string>
-
-
+    <string name="words">Mots</string>
+    <string name="save_word">Mots Sauvegardés</string>
+    <string name="welcome_to_the_dictionary_app">Bienvenue au Dictionaire</string>
+    <string name="search">Recherchez</string>
+    <string name="word">Mot</string>
+    <string name="help">Aide</string>
+    <string name="dictionary_about">À propos</string>
+    <string name="saved_definitions">Définitions sauvegardés</string>
 </resources>

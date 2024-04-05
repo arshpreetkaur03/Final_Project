@@ -45,7 +45,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 startActivity(new Intent(WelcomeActivity.this, WelcomeActivity.class));
             }
         });
-*/
+
+       */
         buttonPage3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

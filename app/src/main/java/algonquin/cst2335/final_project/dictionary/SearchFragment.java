@@ -138,8 +138,8 @@ public class SearchFragment extends Fragment {
                 List<String> words = dao.getAllWords();
                 List<Word> definitions = new ArrayList<>();
                 for (String w : words) {
-                    List<Definition> newDefinition = dao.getDefinitionsForWord(w);
-                    Word word = new Word(w);
+                    final List<Definition> newDefinition = dao.getDefinitionsForWord(w);
+                    final Word word = new Word(w);
                     word.setDefinitions(newDefinition);
                     definitions.add(word);
                 }
@@ -149,4 +149,7 @@ public class SearchFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+
+
 }

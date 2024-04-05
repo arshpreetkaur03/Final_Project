@@ -21,7 +21,7 @@
         android:id="@+id/Dictionary_APP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dictionary APP"
+        android:text="@string/dictionary_app"
         android:layout_marginTop="32dp"
         android:padding="15dp"
         app:cornerRadius="0dp"
