@@ -51,13 +51,6 @@ public class SearchFragment extends Fragment {
         // Initialize the request queue
         requestQueue = Volley.newRequestQueue(getContext());
 
-        binding.helpButton.setOnClickListener((view) -> {
-            new AlertDialog.Builder(getContext())
-                    .setTitle(getString(R.string.help_title))
-                    .setMessage(getString(R.string.help_info))
-                    .setNeutralButton("Ok", (dialog, i) -> dialog.dismiss())
-                    .show();
-        });
 
         binding.searchButton.setOnClickListener((view) -> {
             final String input = binding.searchBar.getText().toString();
@@ -149,6 +142,7 @@ public class SearchFragment extends Fragment {
 
         return binding.getRoot();
     }
+
 
 
 

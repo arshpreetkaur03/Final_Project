@@ -20,6 +20,4 @@ public interface DefinitionDao {
 
     @Query("DELETE FROM Definition WHERE word =:word")
     void deleteDefinitionsForWord(String word);
-
-
 }

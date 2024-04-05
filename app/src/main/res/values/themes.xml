@@ -10,4 +10,9 @@
     <style name="Theme.Final_Project" parent="Base.Theme.Final_Project" />
 
 
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+    <!-- Customize your theme here -->
+    <item name="colorPrimary" type="color">@color/my_primary</item>
+    <item name="colorPrimaryDark" type="color">@color/my_secondary</item>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
