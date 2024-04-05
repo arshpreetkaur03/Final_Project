@@ -132,6 +132,7 @@ public class SunriseActivityTest {
         Espresso.onView(withId(R.id.latitude_input)).check(matches(isDisplayed()));
     }
 
+
     @Test
     public void testSunriseActivity(){
         // Launch the welcome activity
