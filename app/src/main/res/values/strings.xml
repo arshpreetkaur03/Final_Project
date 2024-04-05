@@ -1,6 +1,6 @@
 <resources>
 
-   
+
     <string name="save_song">Save Song</string>
     <string name="duration">Duration</string>
     <string name="album_name">Album Name</string>
@@ -15,7 +15,6 @@
     <string name="delete">Delete</string>
     <string name="search_history">Search History</string>
     <string name="favorite_songs">Favorite Songs</string>
-    <string name="Help">Help</string>
 
     <string name="app_name">CST2335 Final Project</string>
 
@@ -61,7 +60,7 @@
     <string name="update_sentence">The location has been updated successfully</string>
 
     <string name="undo">UNDO</string>
-    <string name="ok">OK</string>
+
 
     <string name="about">ABOUT</string>
     <string name="about_message">Type in the Longitude and Latitude of anywhere you would like to know the sunset and sunrise times of.</string>

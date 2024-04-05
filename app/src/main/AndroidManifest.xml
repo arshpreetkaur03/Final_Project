@@ -17,8 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Final_Project"
         tools:targetApi="31">
-        <activity android:name=".DetailsActivity"></activity>
-        <activity android:name=".FavoriteSongsActivity"></activity>
+        <activity
+            android:name=".DetailsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".FavoriteSongsActivity"
+            android:exported="false"/>
         <activity
             android:name=".DeezerSongActivity"
             android:exported="false"/>

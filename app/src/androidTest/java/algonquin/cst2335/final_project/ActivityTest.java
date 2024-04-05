@@ -59,10 +59,10 @@ public class ActivityTest {
 
         // Click on the help menu item
         Espresso.openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
-        Espresso.onView(withText("Help")).perform(ViewActions.click());
+        Espresso.onView(withText(R.string.help)).perform(ViewActions.click());
 
         // Check if help dialog is displayed
-        Espresso.onView(withText("Help")).check(matches(isDisplayed()));
+        Espresso.onView(withText(R.string.help)).check(matches(isDisplayed()));
     }
 
     @Test
