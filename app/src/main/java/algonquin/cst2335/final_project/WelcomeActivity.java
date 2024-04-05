@@ -2,12 +2,16 @@ package algonquin.cst2335.final_project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import algonquin.cst2335.final_project.dictionary.DictionaryActivity;
+import algonquin.cst2335.final_project.sunrise.SunriseActivity;
 
 
 /**
@@ -25,14 +29,14 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        // Find buttons by ID
-        //Button buttonPage1 = findViewById(Sunrise_Sunset_Page);
-        //Button buttonPage2 = findViewById(R.id.Recipe_Search_Page);
-        Button buttonPage3 = findViewById(R.id.Dictionary_APP);
-        //Button buttonPage4 = findViewById(R.id.Deezer_Song_Search_API_Page);
+        //Find buttons by ID
+        Button buttonPage1 = findViewById(R.id.Sunrise_Sunset_Page);
+        Button buttonPage2 = findViewById(R.id.Recipe_Search_Page);
+        Button buttonPage3 = findViewById(R.id.Dictionary_API_Page);
+        Button buttonPage4 = findViewById(R.id.Deezer_Song_Search_API_Page);
 
         // Set click listeners for each button
-      /*  buttonPage1.setOnClickListener(new View.OnClickListener() {
+        buttonPage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(WelcomeActivity.this, SunriseActivity.class));
@@ -46,7 +50,7 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-       */
+
         buttonPage3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,11 +58,11 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-/*
+
         buttonPage4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(WelcomeActivity.this, WelcomeActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, DeezerSongActivity.class));
             }
         });
     }
@@ -79,6 +83,5 @@ public class WelcomeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
- */
-}
+
 }
