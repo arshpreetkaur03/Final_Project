@@ -158,7 +158,7 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.help_button);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint(getString(R.string.search_artists));
 
@@ -179,14 +179,15 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.help_button) {
+        if (id == R.id.action_help) {
             showHelpDialog();
             return true;
-        } else if (id == R.id.menu_help) {
+        } else if (id == R.id.action_favorite_songs) {
             openFavoriteSongsActivity();
             return true;
         }
@@ -205,6 +206,7 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
 
     /**
      * Opens the activity to display favorite songs.
