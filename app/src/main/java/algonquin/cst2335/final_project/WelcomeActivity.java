@@ -32,7 +32,7 @@ public class WelcomeActivity extends AppCompatActivity {
         //Find buttons by ID
         Button buttonPage1 = findViewById(R.id.Sunrise_Sunset_Page);
         Button buttonPage2 = findViewById(R.id.Recipe_Search_Page);
-        Button buttonPage3 = findViewById(R.id.Dictionary_API_Page);
+        Button buttonPage3 = findViewById(R.id.Dictionary_APP);
         Button buttonPage4 = findViewById(R.id.Deezer_Song_Search_API_Page);
 
         // Set click listeners for each button

@@ -90,10 +90,10 @@ public class DetailsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_help) {
+        if (id == R.id.help_button) {
             showHelpDialog();
             return true;
-        } else if (id == R.id.action_favorite_songs) {
+        } else if (id == R.id.menu_help) {
             openFavoriteSongsActivity();
             return true;
         }

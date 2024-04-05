@@ -158,7 +158,7 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
+        MenuItem searchItem = menu.findItem(R.id.help_button);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint(getString(R.string.search_artists));
 
@@ -183,10 +183,10 @@ public class DeezerSongActivity extends AppCompatActivity implements SongAdapter
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_help) {
+        if (id == R.id.help_button) {
             showHelpDialog();
             return true;
-        } else if (id == R.id.action_favorite_songs) {
+        } else if (id == R.id.menu_help) {
             openFavoriteSongsActivity();
             return true;
         }
