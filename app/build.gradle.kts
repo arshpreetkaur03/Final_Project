@@ -8,6 +8,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 
     defaultConfig {
@@ -44,7 +45,7 @@ dependencies {
     implementation("androidx.room:room-common:2.6.1")
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("com.squareup.picasso:picasso:2.8")
-    implementation("com.android.volley:volley:1.2.1")
+    implementation("com.android.volley:volley:1.2.1") // Volley dependency declared only once
     annotationProcessor("androidx.room:room-compiler:2.6.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

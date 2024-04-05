@@ -61,4 +61,12 @@
 
 
 
+
+    <string name="main_title">What word are you looking for?</string>
+    <string name="saved_word">Saved Words</string>
+    <string name="help_title">Help</string>
+    <string name="help_info">Welcome to the Dictionary Application. To use the app, start by typing your unknown word into the search bar and hit Enter or click the search icon.</string>
+
+
+
 </resources>
