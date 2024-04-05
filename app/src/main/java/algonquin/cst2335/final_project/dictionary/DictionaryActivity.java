@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ import java.util.concurrent.Executors;
 import algonquin.cst2335.final_project.R;
 import algonquin.cst2335.final_project.databinding.DictionaryMainBinding;
 
+import algonquin.cst2335.final_project.dictionary.SavedWordsFragment;
 
 public class DictionaryActivity extends AppCompatActivity {
 
@@ -49,8 +51,8 @@ public class DictionaryActivity extends AppCompatActivity {
 
         setFragment(new SearchFragment(), false);
 
-        //Toolbar toolbar = findViewById(R.id.dict_appbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     public void setFragment(Fragment fragment, boolean addToBackstack) {
@@ -63,7 +65,7 @@ public class DictionaryActivity extends AppCompatActivity {
     public DefinitionDao getDefinitionDao() {
         return dao;
     }
-/*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -77,16 +79,24 @@ public class DictionaryActivity extends AppCompatActivity {
         if (id == R.id.menu_help) {
             handleAboutMenuItem();
             return true;
+        } else if (id == R.id.help_button) {
+            showHelpDialog();
+            return true;
         } else {
             return super.onOptionsItemSelected(item);
         }
-    }
-
-
+}
 
     private void handleAboutMenuItem() {
         Toast.makeText(this, "Version 1.0, created by Hansvin Venetheethan", Toast.LENGTH_SHORT).show();
     }
 
- */
+    private void showHelpDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle(getString(R.string.help_title))
+                .setMessage(getString(R.string.help_info))
+                .setNeutralButton("Ok", (dialog, i) -> dialog.dismiss())
+                .show();
+
+    }
 }
