@@ -5,19 +5,10 @@
       <entry key="ActivityTest">
         <State />
       </entry>
-      <entry key="DeezerSongActivityTest">
-        <State />
-      </entry>
       <entry key="SunriseActivityTest">
         <State />
       </entry>
       <entry key="app">
-        <State />
-      </entry>
-      <entry key="testSaveSearchTerm()">
-        <State />
-      </entry>
-      <entry key="testSuccessfulSearch()">
         <State />
       </entry>
     </value>
