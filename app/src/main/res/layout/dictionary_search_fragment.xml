@@ -47,22 +47,10 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/help_button"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/question_icon"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:src="@drawable/question_icon" />
-
-    <ImageButton
         android:id="@+id/saved_button"
-        android:layout_width="150dp"
-        android:layout_height="88dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="67dp"
+        android:layout_height="63dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/menu"
         android:scaleType="fitXY"
