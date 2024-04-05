@@ -10,7 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#D582E3"
         android:popupTheme="@style/TextAppearance.AppCompat" />
 
     <!-- Search Input -->
@@ -41,7 +41,7 @@
         android:paddingEnd="24dp"
         android:paddingBottom="8dp"
         android:text="@string/search"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_songs"

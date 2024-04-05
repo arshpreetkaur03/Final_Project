@@ -13,4 +13,7 @@
     <string name="song_selected">"गीत चयनित: "</string>
     <string name="ok">ठीक है</string>
     <string name="delete">Delete</string>
+    <string name="search_history">Search History</string>
+    <string name="favorite_songs">Favorite Songs</string>
+    <string name="Help">Help</string>
 </resources>

@@ -89,4 +89,12 @@ public class ActivityTest {
         // Check if activity is finished
         Espresso.onView(withId(android.R.id.content)).check(matches(isDisplayed()));
     }
+    @Test
+    public void testSearchButtonIsDisplayed() {
+        // Launch the activity
+        ActivityScenario.launch(DeezerSongActivity.class);
+
+        // Check if the search button is displayed
+        Espresso.onView(withId(R.id.search_button)).check(matches(isDisplayed()));
+    }
 }

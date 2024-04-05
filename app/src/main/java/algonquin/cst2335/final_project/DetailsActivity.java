@@ -5,7 +5,11 @@ package algonquin.cst2335.final_project;
  * Lab Section: 022
  * Creation Date: 31 March 2024
  */
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.room.Room;
 
 import com.squareup.picasso.Picasso;
@@ -76,5 +81,43 @@ public class DetailsActivity extends AppCompatActivity {
             db.songDao().insert(songd);
             runOnUiThread(() -> Toast.makeText(DetailsActivity.this, "Song saved to favorites", Toast.LENGTH_SHORT).show());
         }).start();
+    }
+
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_help) {
+            showHelpDialog();
+            return true;
+        } else if (id == R.id.action_favorite_songs) {
+            openFavoriteSongsActivity();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Shows a help dialog to provide assistance to the user.
+     */
+    private void showHelpDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Help");
+        builder.setMessage(R.string.help);
+        builder.setPositiveButton(R.string.ok, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    /**
+     * Opens the activity to display favorite songs.
+     */
+    private void openFavoriteSongsActivity() {
+        Intent intent = new Intent(this, FavoriteSongsActivity.class);
+        startActivity(intent);
     }
 }

@@ -12,5 +12,8 @@
     <string name="song_selected">"Song selected: "</string>
     <string name="ok">OK</string>
     <string name="delete">Delete</string>
+    <string name="search_history">Search History</string>
+    <string name="favorite_songs">Favorite Songs</string>
+    <string name="Help">Help</string>
 
 </resources>
