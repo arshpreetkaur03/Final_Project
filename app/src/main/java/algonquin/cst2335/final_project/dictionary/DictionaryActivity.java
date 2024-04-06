@@ -1,5 +1,8 @@
 package algonquin.cst2335.final_project.dictionary;
-
+/**
+ * Author: Hansvin Venetheethan
+ * Purpose: Dictionary Activity
+ */
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -55,7 +58,7 @@ public class DictionaryActivity extends AppCompatActivity {
 
     public void setFragment(Fragment fragment, boolean addToBackstack) {
         FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-        t.replace(binding.fragmentContainerView.getId(), fragment); // Access root view and use correct container ID
+        t.replace(binding.fragmentContainerView.getId(), fragment);
         if (addToBackstack) t.addToBackStack(null);
         t.commit();
     }

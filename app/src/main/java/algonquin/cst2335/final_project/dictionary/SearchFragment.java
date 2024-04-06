@@ -80,7 +80,7 @@ public class SearchFragment extends Fragment {
                     new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
-                            // Process the response
+
                             List<Definition> definitions = new ArrayList<>();
                             try {
                                 for (int i = 0; i < response.length(); ++i) {
@@ -116,12 +116,11 @@ public class SearchFragment extends Fragment {
                                     .setTitle("Error")
                                     .setMessage(error.getLocalizedMessage())
                                     .setNeutralButton("Ok", (dialog, i) -> dialog.dismiss())
-                                    .show();
+                            .show();
                         }
                     }
             );
 
-            // Add the request to the RequestQueue
             requestQueue.add(jsonArrayRequest);
         });
 
@@ -142,7 +141,6 @@ public class SearchFragment extends Fragment {
 
         return binding.getRoot();
     }
-
 
 
 

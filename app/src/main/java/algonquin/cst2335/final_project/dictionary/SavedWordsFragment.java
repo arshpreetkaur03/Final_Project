@@ -1,5 +1,8 @@
 package algonquin.cst2335.final_project.dictionary;
-
+/**
+ * Author: Hansvin Venetheethan
+ * Purpose: SavedWordsFragment
+ */
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;

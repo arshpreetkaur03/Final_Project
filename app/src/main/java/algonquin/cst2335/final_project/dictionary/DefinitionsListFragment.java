@@ -1,5 +1,8 @@
 package algonquin.cst2335.final_project.dictionary;
-
+/**
+ * Author: Hansvin Venetheethan
+ * Purpose: Definitions List Fragment
+ */
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
