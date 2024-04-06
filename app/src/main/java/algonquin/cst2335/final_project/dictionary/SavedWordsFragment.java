@@ -1,7 +1,8 @@
 package algonquin.cst2335.final_project.dictionary;
 /**
  * Author: Hansvin Venetheethan
- * Purpose: SavedWordsFragment
+ * Class name: SavedWordsFragment
+ * Class section: (031)
  */
 import android.os.Bundle;
 import android.util.Log;

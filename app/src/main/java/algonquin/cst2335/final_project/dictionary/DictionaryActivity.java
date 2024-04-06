@@ -1,9 +1,10 @@
 package algonquin.cst2335.final_project.dictionary;
 /**
  * Author: Hansvin Venetheethan
- * Purpose: Dictionary Activity
+ * Class name: DictionaryActivity
+ * Class section: (031)
  */
-import android.os.AsyncTask;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,8 +24,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
+
 
 import algonquin.cst2335.final_project.R;
 import algonquin.cst2335.final_project.databinding.DictionaryMainBinding;

@@ -1,7 +1,8 @@
 package algonquin.cst2335.final_project.dictionary;
 /**
  * Author: Hansvin Venetheethan
- * Purpose: Definition Interface Dao
+ * Class name: DefinitionDao
+ * Class section: (031)
  */
 import androidx.room.Dao;
 import androidx.room.Insert;

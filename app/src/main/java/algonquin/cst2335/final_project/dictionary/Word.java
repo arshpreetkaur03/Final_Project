@@ -1,5 +1,9 @@
 package algonquin.cst2335.final_project.dictionary;
-
+/**
+ * Author: Hansvin Venetheethan
+ * Class name: Word
+ * Class section: (031)
+ */
 import java.util.ArrayList;
 import java.util.List;
 

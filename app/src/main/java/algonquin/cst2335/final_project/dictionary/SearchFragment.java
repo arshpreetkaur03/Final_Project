@@ -1,5 +1,9 @@
 package algonquin.cst2335.final_project.dictionary;
-
+/**
+ * Author: Hansvin Venetheethan
+ * Class name: SearchFragment
+ * Class section: (031)
+ */
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -48,7 +52,6 @@ public class SearchFragment extends Fragment {
 
         binding.searchBar.setText(search);
 
-        // Initialize the request queue
         requestQueue = Volley.newRequestQueue(getContext());
 
 
@@ -69,7 +72,7 @@ public class SearchFragment extends Fragment {
                 return; // Exit method
             }
 
-            // Format the URL
+            // URL Format
             String url = String.format("https://api.dictionaryapi.dev/api/v2/entries/en/%s", input);
 
             // Create a request using Volley

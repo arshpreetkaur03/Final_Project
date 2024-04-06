@@ -1,7 +1,8 @@
 package algonquin.cst2335.final_project.dictionary;
 /**
  * Author: Hansvin Venetheethan
- * Purpose: Room database
+ * Class name: Definition
+ * Class section: (031)
  */
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
